@@ -17,7 +17,13 @@
             <div id="trait-floaters"></div>
             
             <div id="info-panel" class="glass-morphism hidden">
-                <h1 id="drink-title">空杯待饮</h1>
+                <div class="narrative-container">
+                    <h1 id="drink-title">空杯待饮</h1>
+                    <div id="label-wrapper" class="hidden">
+                        <span id="false-label"></span>
+                        <span id="true-label"></span>
+                    </div>
+                </div>
                 <p id="tribute-content"></p>
                 <div class="recipe-box">
                     <strong>配方：</strong>
@@ -46,6 +52,8 @@
             </div>
         </div>
     </div>
+    
+    <audio id="metal-clank-audio" preload="auto"></audio>
     <script type="module" src="main.js"></script>
 </body>
 </html>
