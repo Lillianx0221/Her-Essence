@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Essence | 灵境调酒屋</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="particle-bg"></div>
+        
+        <div id="canvas-container"></div>
+        
+        <div id="ui-overlay">
+            <div id="trait-floaters"></div>
+            
+            <div id="info-panel" class="glass-morphism hidden">
+                <h1 id="drink-title">空杯待饮</h1>
+                <p id="tribute-content"></p>
+                <div class="recipe-box">
+                    <strong>配方：</strong>
+                    <span id="ingredients-text"></span>
+                </div>
+                <div class="actions">
+                    <button id="accept-btn">饮下这杯敬意</button>
+                    <button id="reject-btn" class="secondary">不够契合，重新调配</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="survey-modal" class="modal hidden">
+            <div class="modal-content glass-morphism">
+                <h3>微调你的感官共鸣</h3>
+                <div class="input-group">
+                    <label>你偏好的色彩倾向：</label>
+                    <input type="color" id="color-picker" value="#7e22ce">
+                </div>
+                <div class="input-group">
+                    <label>此时的心境/气味：</label>
+                    <input type="text" id="mood-input" placeholder="例如：木质、冷冽、诗意...">
+                </div>
+                <button id="recalculate-btn">重新生成</button>
+                <button id="close-modal-btn" class="secondary">取消</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
