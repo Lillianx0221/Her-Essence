@@ -1,0 +1,160 @@
+:root {
+    --forest-deep: #061612;
+    --ocean-night: #0a0a2e;
+    --stellar-glow: #7e22ce;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--forest-deep);
+    color: #e2e8f0;
+    font-family: 'Optima', 'PingFang SC', serif;
+    overflow: hidden;
+}
+
+#particle-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #1a2e26 0%, #050512 100%);
+}
+
+/* 3D 容器置于底层，UI 浮于其上 */
+#canvas-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none; /* 让点击穿透到交互层 */
+}
+
+#ui-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+/* 毛玻璃组件 */
+.glass-morphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 悬浮词条 */
+.trait-item {
+    position: absolute;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: rgba(126, 34, 206, 0.15);
+    border: 1px solid rgba(126, 34, 206, 0.4);
+    transition: all 0.4s ease;
+    animation: float 4s infinite ease-in-out;
+    user-select: none;
+}
+
+.trait-item:hover {
+    background: rgba(126, 34, 206, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--stellar-glow);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* 信息面板 */
+#info-panel {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    text-align: center;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#info-panel.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 20px);
+}
+
+.recipe-box {
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    font-size: 0.9em;
+}
+
+/* 按钮样式 */
+button {
+    background: var(--stellar-glow);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+    margin: 5px;
+}
+
+button:hover { background: #9333ea; }
+button.secondary { background: rgba(255,255,255,0.1); border: 1px solid white; }
+button.secondary:hover { background: rgba(255,255,255,0.2); }
+
+/* 弹窗样式 */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.hidden { display: none; }
+
+.modal-content {
+    padding: 40px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(255,255,255,0.9);
+}
